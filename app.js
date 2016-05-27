@@ -5,6 +5,8 @@ window.onload = function(){
   var colors = []
 
   // functions
+
+  // grabs some random colors from the colour lovers API and generates word bubbles based on those.
   var getColors = function(){
 
     $.ajax({
@@ -43,8 +45,29 @@ window.onload = function(){
     });
 
   }
-  getColors();
+  // getColors();
 
+
+  // generates random RGB colors client side and in turn generates random word bubbles
+  var genColors = function(){
+    colorArr = [];
+
+    $.ajax({
+      method: 'GET',
+      url: "http://randomword.setgetgo.com/get.php",
+    }).done(function(data){
+      console.log("rand word is", data);
+
+      var dataLen = data.length * 3
+      for (var i = 0; i < dataLen; i++) {
+        var randRGB = Math.floor(Math.random() * 255 + 1)
+        colorArr.push(randRGB);
+      }
+      console.log(colorArr);
+
+    })
+  }
+  genColors();
 }
 
 
