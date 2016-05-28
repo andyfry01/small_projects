@@ -1,5 +1,10 @@
+var express = require('express')
+var cors = require('cors');
 var cleverbot = require('cleverbot.io')
 var API = require("./API")
+
+var app = express();
+app.use(cors())
 
 var sammy = new cleverbot("rwDHjh2iWgvWVUph", API.KEY)
 sammy.setNick("sammy")
