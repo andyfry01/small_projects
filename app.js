@@ -50,20 +50,40 @@ window.onload = function(){
 
   // generates random RGB colors client side and in turn generates random word bubbles
   var genColors = function(){
-    colorArr = [];
+    var colorArr = [];
 
     $.ajax({
       method: 'GET',
       url: "http://randomword.setgetgo.com/get.php",
     }).done(function(data){
+
       console.log("rand word is", data);
 
       var dataLen = data.length * 3
       for (var i = 0; i < dataLen; i++) {
+
         var randRGB = Math.floor(Math.random() * 255 + 1)
         colorArr.push(randRGB);
+
+        if (colorArr.length == 3) {
+          console.log(colorArr);
+
+          var word = document.createElement('div')
+          word.className = "letter"
+          var index = Math.ceil((i / 3) - 1)
+          if (index == - 0) {
+            index = 0
+          }
+          console.log("letter index", index);
+          word.innerText = data[index]
+          word.style.backgroundColor = "rgb(" + colorArr[0] + "," + colorArr[1] + "," + colorArr[2] + ")"
+          wordContainer.appendChild(word)
+          colorArr = []
+
+        }
+
       }
-      console.log(colorArr);
+
 
     })
   }
