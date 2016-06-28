@@ -38,12 +38,6 @@ p {
   font-size: 2em;
 }
 
-.btn-div {
-  height: auto;
-  width: auto;
-  margin: 10px;
-  padding: 10px;
-}
 
 button {
   height: 150px;
@@ -51,6 +45,8 @@ button {
   max-width: auto;
   border: 1px solid black;
   border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
   background-color: #2DC7FA;
 }
 
