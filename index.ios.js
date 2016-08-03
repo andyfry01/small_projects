@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import {
   AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  ListView
+  Navigator,
+  StyleSheet
 } from 'react-native';
 
-import MESSAGE from './test'
-import ViewContainer from './App/Components/ViewContainer'
-import StatusBarBackground from './App/Components/StatusBarBackground'
+import PeopleIndexScreen from './App/Screens/PeopleIndexScreen'
 
 const PEOPLE = [
   {firstName: "Andy", lastName: "Fry", age: 28},
@@ -17,51 +13,41 @@ const PEOPLE = [
   {firstName: "Kit", lastName: "Fry", age: 26}
 ]
 
+
 class nativeTutorial extends Component {
-  constructor(props) {
-    super(props)
-    let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 != r2})
-    this.state = {
-      peopleDataSource: ds.cloneWithRows(PEOPLE)
+
+  _renderScene(route, navigator) {
+    const globalNavigatorProps = { navigator }
+
+    switch(route.ident) {
+
+      case "PeopleIndex":
+      return (
+        <PeopleIndexScreen
+        {...globalNavigatorProps} />
+      )
+
+      default:
+      return (
+        <PeopleIndexScreen
+        {...globalNavigatorProps} />
+      )
     }
   }
 
   render() {
     return (
-      <ViewContainer>
-        <StatusBarBackground backgroundColor="skyblue"/>
-        <Text>{'hello from inside view container'}</Text>
-        <Text>{'Shoop the doop'}</Text>
-        <ListView
-          style={{marginTop: 100}}
-          dataSource={this.state.peopleDataSource}
-          renderRow={(person) => { return this._renderPersonRow(person) }}>
-        </ListView>
-      </ViewContainer>
-
-    );
-  }
-  _renderPersonRow(person) {
-    return(
-      <View style={styles.personRow}>
-        <Text style={styles.personName}>{person.firstName} {person.lastName}</Text>
-      </View>
+      <Navigator
+        initialRoute={{ident: "PeopleIndex"}}
+        ref="appNavigator"
+        style={styles.navigatorStyles}
+        renderScene={this._renderScene} />
     )
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  personRow: {
-    flexDirection: 'row',
-    justifyContent: 'center'
-  },
-  personName: {}
+  navigatorStyles: {}
 });
 
 AppRegistry.registerComponent('nativeTutorial', () => nativeTutorial);
