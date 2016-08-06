@@ -3,11 +3,11 @@ function onYouTubeIframeAPIReady(obj) {
         //if (i.hasOwnProperty(keystroke) {
         const obj = config[i]
         console.log(obj);
-        $('#players').append('<div id="' + obj.loopInfo.keystroke + '"/>')
+        $('#players').append('<div class="' + obj.loopInfo.keystroke + '"><div id="' + obj.loopInfo.keystroke + '"></div><div class="keystroke">'+obj.loopInfo.keystroke+'</div></div>')
 
         obj.player = new YT.Player(obj.loopInfo.keystroke, {
-            width: obj.video.width,
-            height: obj.video.height,
+            width: 200,
+            height: 100,
             videoId: obj.video.videoId
         });
 
@@ -47,10 +47,10 @@ function stopLoop(obj) {
 }
 
 function queueHit(obj) {
+    config[obj.loopInfo.keystroke].player.playVideo();
     obj.live.timeout = setTimeout(function() {
         config[obj.loopInfo.keystroke].player.pauseVideo();
         config[obj.loopInfo.keystroke].player.seekTo(obj.loopInfo.seekTime)
-        config[obj.loopInfo.keystroke].player.playVideo();
     }, obj.loopInfo.interval)
 }
 
