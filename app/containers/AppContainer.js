@@ -1,9 +1,14 @@
+'use strict'
+
 import React, { Component } from 'react';
+import Header from '../components/Header'
 
 class AppContainer extends Component {
   render() {
     return(
-      <div><h1>Hello world!</h1></div>
+      <div>
+        <Header />
+      </div>
     )
   }
 }
