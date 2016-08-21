@@ -1,5 +1,6 @@
 'use strict'
 
+// React
 import React, { Component } from 'react'
 
 class Result extends Component {

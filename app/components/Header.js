@@ -1,6 +1,9 @@
 'use strict'
 
+// React
 import React, { Component } from 'react';
+
+// Components
 import Text from './Text';
 
 class Header extends Component {

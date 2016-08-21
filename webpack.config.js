@@ -16,12 +16,7 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js'
   },
-  plugins: [HtmlWebpackPluginConfig,
-    new webpack.DefinePlugin({
-      'process.env': {
-        'GEOTUBE_API_KEY': JSON.stringify(process.env.GEOTUBE_API_KEY)
-      }
-    })],
+  plugins: [HtmlWebpackPluginConfig],
   module: {
     loaders: [
       {
