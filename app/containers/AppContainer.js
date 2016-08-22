@@ -1,11 +1,11 @@
-'use strict'
+'use strict';
 
 // React
 import React, { Component } from 'react';
 
 // Components
-import Header from '../components/Header'
-import Calculator from '../components/Calculator'
+import Header from '../components/Header';
+import Calculator from '../components/Calculator';
 
 
 class AppContainer extends Component {
@@ -15,8 +15,8 @@ class AppContainer extends Component {
         <Header />
         <Calculator />
       </div>
-    )
-  }
-}
+    );
+  };
+};
 
-module.exports = AppContainer
+export default AppContainer;

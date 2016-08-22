@@ -1,21 +1,19 @@
-'use strict'
+'use strict';
 
 // React
 import React, { Component } from 'react';
 
 class Input extends Component {
   constructor(props) {
-    super(props)
-  }
-  componentDidMount(){
-    console.log(this.props);
-  }
+    super(props);
+  };
+  
   render() {
     return(
       <div>
         <form>
-          <input type="text" id="valOne" onChange={this.props.setVal} />
-          <input type="text" id="valTwo" onChange={this.props.setVal} />
+          <input type="text" id="valOne" placeholder='Enter first value' onChange={this.props.setVal} />
+          <input type="text" id="valTwo" placeholder='Enter second value' onChange={this.props.setVal} />
         </form>
         <div>
           <button id='add' onClick={this.props.setOperator}>Add</button>
@@ -24,8 +22,8 @@ class Input extends Component {
           <button id='divide' onClick={this.props.setOperator}>Divide</button>
         </div>
       </div>
-    )
-  }
+    );
+  };
 };
 
-module.exports = Input;
+export default Input;
