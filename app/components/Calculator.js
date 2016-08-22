@@ -49,9 +49,9 @@ class Calculator extends Component {
   render() {
     return(
       <div>
-      <h2>Input values here and select an operator below:</h2>
-      <Input setVal={this.setVal} setOperator={this.setOperator}/>
-      <Result valOne={this.state.valOne} valTwo={this.state.valTwo} operator={this.state.operator} />
+        <h2>Input values here and select an operator below:</h2>
+        <Input setVal={this.setVal} setOperator={this.setOperator}/>
+        <Result valOne={this.state.valOne} valTwo={this.state.valTwo} operator={this.state.operator} />
       </div>
     );
   };
