@@ -37,6 +37,27 @@ body {
 }
 
 
+/* Styling for common elements shared for both examples */
+
+.parent {
+  position: relative;
+  height: 200px;
+  width: 200px;
+  background: white;
+  border: 1px solid black;
+  margin: 0 auto;
+}
+
+.child {
+  position: relative;
+  height: 100px;
+  width: 100px;
+  background: blue;
+  border: 1px dotted black;
+}
+
+/*** Implementation-specific styling ***/
+
 /* Margin implementation styling */
 
 #margin_area {
@@ -52,19 +73,11 @@ body {
 }
 
 #parent_box_margin {
-  position: relative;
-  height: 200px;
-  width: 200px;
-  margin: 0 auto;
-  background: white;
+
 }
 
 #child_box_margin {
-  position: relative;
-  height: 100px;
-  width: 100px;
-  margin: 25%;
-  background: blue;
+
 }
 
 
@@ -83,23 +96,11 @@ body {
 }
 
 #parent_box_flexbox {
-  position: relative;
-  height: 200px;
-  width: 200px;
-  background: white;
-  border: 1px solid black;
-  margin: 0 auto;
-
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
 
 #child_box_flexbox {
-  height: 100px;
-  width: 100px;
-  background: blue;
-
-  border: 1px dotted black;
   margin: 0 auto;
 }
