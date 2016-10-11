@@ -53,15 +53,14 @@ body {
 
 .parent {
   position: relative;
-  height: 200px;
-  width: 200px;
+  height: 300px;
+  width: 300px;
   background: white;
   border: 1px solid black;
   margin: 0 auto;
 }
 
 .child {
-  position: relative;
   height: 100px;
   width: 100px;
   background: blue;
@@ -82,7 +81,10 @@ body {
 }
 
 #child_box_margin {
-  margin: 25%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 
