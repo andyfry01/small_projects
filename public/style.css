@@ -1,3 +1,5 @@
+/* Basic site styling */
+
 * {
   box-sizing: border-box;
   font-family: 'Helvetica', sans-serif;
@@ -6,6 +8,13 @@
 body {
   margin: 0;
 }
+
+.center {
+  margin: 0 auto;
+}
+
+
+/* Styling for site subsections */
 
 #header {
   position: relative;
@@ -28,7 +37,7 @@ body {
 }
 
 
-/* Padded implementation styling*/
+/* Padded implementation styling */
 
 #padding_area {
   position: relative;
@@ -46,6 +55,7 @@ body {
 
 }
 
+
 /* Flexbox implementation styling */
 
 #flexbox_area {
@@ -54,12 +64,30 @@ body {
   height: 100%;
   float: left;
   background: lightgreen;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 #parent_box_flexbox {
+  position: relative;
+  height: 200px;
+  width: 200px;
+  background: white;
+  border: 1px solid black;
+  margin: 0 auto;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 #child_box_flexbox {
+  height: 100px;
+  width: 100px;
+  background: blue;
 
+  border: 1px dotted black;
+  margin: 0 auto;
 }
