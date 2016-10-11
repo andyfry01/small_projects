@@ -37,22 +37,34 @@ body {
 }
 
 
-/* Padded implementation styling */
+/* Margin implementation styling */
 
-#padding_area {
+#margin_area {
   position: relative;
   width: 50%;
   height: 100%;
   float: left;
   background: lightyellow;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
-#parent_box_padding {
-
+#parent_box_margin {
+  position: relative;
+  height: 200px;
+  width: 200px;
+  margin: 0 auto;
+  background: white;
 }
 
-#child_box_padding {
-
+#child_box_margin {
+  position: relative;
+  height: 100px;
+  width: 100px;
+  margin: 25%;
+  background: blue;
 }
 
 
