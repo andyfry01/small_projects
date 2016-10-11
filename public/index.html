@@ -12,6 +12,21 @@
         <h1>Thank you Ramesh!</h1>
         <p>After meeting with you and your team, I had some thoughts about how to improve on the CSS box demonstration you asked me for. Here it is below with a margin implementation and a flexbox implementation.</p>
         <p>If you'd like to check out the code (along with the commit history) you can view its <a href="https://github.com/andyfry01/TDA_thankyou">Github repo here</a>.</p>
+        <div class="resizing_controls">
+          <form>
+
+            <label for="parent_box_resize">Resize the parent box</label>
+            <input type="number" placeholder='200px' />
+            <input type="number" placeholder='200px' />
+
+            <label for="child_box_resize">Resize the child box</label>
+            <input type="number" placeholder='100px' />
+            <input type="number" placeholder='100px' />
+
+            <button type="button" id="change_submit_btn">Click to resize the boxes</button>
+          </form>
+        </div>
+
       </header> <!-- End header -->
 
 
@@ -34,5 +49,6 @@
       </section> <!-- End box examples section -->
 
     </div> <!-- End site wrap -->
+    <script src="./index.js"></script>
   </body>
 </html>
