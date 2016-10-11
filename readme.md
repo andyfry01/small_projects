@@ -1,0 +1,2 @@
+# TD Ameritrade Followup
+This is a followup to an interview held at TD Ameritrade for a developer role. It consists of two implementations of questions asked during the coding portion of the interview. The idea is to represent two boxes on the page, one within the other, with the inner box having equidistant spacing on all sides to the outer box. One implementation uses padding on the parent box to achieve this, the second implementation uses flexbox.
