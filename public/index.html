@@ -10,16 +10,17 @@
 
       <header id="header" class="center">
         <h1>Thank you Ramesh!</h1>
-        <p>After meeting with you and your team, I had some thoughts about how to improve on the CSS box demonstration you asked me for. Here it is below with a margin implementation and a flexbox implementation.</p>
+        <p>After meeting with you and your team, I had some thoughts about how to improve on the CSS box demonstration you asked me for.</p>
+        <p>Here it is below with a margin implementation and a flexbox implementation.</p>
         <p>If you'd like to check out the code (along with the commit history) you can view its <a href="https://github.com/andyfry01/TDA_thankyou">Github repo here</a>.</p>
-        <div class="resizing_controls">
+
+        <div id="resizing_controls">
           <form>
-
-            <label for="parent_box_resize">Resize the parent boxes (in pixels)</label>
-            <input type="number" placeholder='200px' value=200 id="parent_resize_val" />
-
-            <label for="child_box_resize">Resize the child boxes (in pixels)</label>
-            <input type="number" placeholder='100px' value=100 id="child_resize_val" />
+            <label for="parent_box_resize" class="label">Resize the parent boxes (in pixels)</label>
+            <input type="number" placeholder='300px' value=300 class="inputs" id="parent_resize_val" />
+            <br />
+            <label for="child_box_resize" class="label">Resize the child boxes (in pixels)</label>
+            <input type="number" placeholder='200px' value=200 class="inputs" id="child_resize_val" />
 
             <button type="button" id="change_submit_btn">Click to resize the boxes</button>
           </form>
@@ -30,7 +31,7 @@
 
       <section id="box_examples">
         <div class="example_area" id="margin_area">
-          <h2 class="center">Margin example</h2>
+          <h2 class="center headerBG">Margin example</h2>
           <div class="parent" id="parent_box_margin">
             <div class="child" id="child_box_margin">
             </div>
@@ -38,7 +39,7 @@
         </div> <!-- End margin area -->
 
         <div class="example_area" id="flexbox_area">
-          <h2 class="center">Flexbox example</h2>
+          <h2 class="center headerBG">Flexbox example</h2>
           <div class="parent" id="parent_box_flexbox">
             <div class="child" id="child_box_flexbox">
             </div>
