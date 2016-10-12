@@ -15,13 +15,11 @@
         <div class="resizing_controls">
           <form>
 
-            <label for="parent_box_resize">Resize the parent boxes</label>
-            <input type="number" placeholder='200px' id="parent_height" />
-            <input type="number" placeholder='200px' id="parent_width" />
+            <label for="parent_box_resize">Resize the parent boxes (in pixels)</label>
+            <input type="number" placeholder='200px' value=200 id="parent_resize_val" />
 
-            <label for="child_box_resize">Resize the child boxes</label>
-            <input type="number" placeholder='100px' id="child_height" />
-            <input type="number" placeholder='100px' id="child_width" />
+            <label for="child_box_resize">Resize the child boxes (in pixels)</label>
+            <input type="number" placeholder='100px' value=100 id="child_resize_val" />
 
             <button type="button" id="change_submit_btn">Click to resize the boxes</button>
           </form>

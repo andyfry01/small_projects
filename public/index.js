@@ -3,46 +3,73 @@
 window.onload = function() {
   console.log('hello from index.js!')
 
-  /*  **** DOM ELEMENTS ****  */
+  /******************************/
+  /*   **** DOM ELEMENTS ****   */
+  /******************************/
 
-  // Flexbox DOM elements and height/width styles
+  // Flexbox DOM elements
   const FLEXBOX_PARENT = document.getElementById('parent_box_flexbox')
-  let flexboxParentHeight = FLEXBOX_PARENT.style.height
-  let flexboxParentWidth = FLEXBOX_PARENT.style.width
   const FLEXBOX_CHILD = document.getElementById('child_box_flexbox')
-  let flexboxChildHeight = FLEXBOX_CHILD.style.height
-  let flexboxChildWidth = FLEXBOX_CHILD.style.width
 
-  // Margin DOM elements and height/width styles
+  // Margin DOM elements
   const MARGIN_PARENT = document.getElementById('parent_box_margin')
-  let marginParentHeight = MARGIN_PARENT.style.height
-  let marginParentWidth = MARGIN_PARENT.style.width
   const MARGIN_CHILD = document.getElementById('child_box_margin')
-  let marginChildHeight = MARGIN_CHILD.style.height
-  let marginChildWidth = MARGIN_CHILD.style.width
 
-  // Resizing inputs and submit button
-  const PARENT_HEIGHT_RESIZE = document.getElementById('parent_height')
-  const PARENT_WIDTH_RESIZE = document.getElementById('parent_width')
-  const CHILD_HEIGHT_RESIZE = document.getElementById('child_height')
-  const CHILD_WIDTH_RESIZE = document.getElementById('child_width')
+  // Submit button
   const SUBMIT_BTN = document.getElementById('change_submit_btn')
 
 
-  /*  **** FUNCTIONS ****  */
+  /******************************/
+  /*    **** FUNCTIONS ****     */
+  /******************************/
 
-  // Submit button event listener, fires BOX_RESIZE
+  // Submit button event listener, fires CHECK_VALS to make sure user inputs are valid.
   SUBMIT_BTN.addEventListener('click', function(){
-    BOX_RESIZE()
+
+    // Grabbing resizing input values from DOM
+    let parentResizeVal = document.getElementById('parent_resize_val').value
+    let childResizeVal = document.getElementById('child_resize_val').value
+
+    // Saving resizing inputs in an object to make passing them into the compare function tidier
+    let resizeVals = {
+        parentResizeVal: parseInt(parentResizeVal),
+        childResizeVal: parseInt(childResizeVal)
+      }
+
+    CHECK_VALS(resizeVals, FLEXBOX_PARENT, FLEXBOX_CHILD, MARGIN_PARENT, MARGIN_CHILD)
+
   })
 
-  // Resizing function
-  const BOX_RESIZE = function() {
+  // CHECK_VALS checks current size of boxes against user input.
+  // If the resize value for the parent is greater than the resize value for the child, BOX_RESIZE is called.
+  const CHECK_VALS = function(resizeVals, flexboxParent, flexboxChild, marginParent, marginChild) {
+
+    let parentBoxArray = [flexboxParent, marginParent]
+    let childBoxArray = [flexboxChild, marginChild]
+
+    if (resizeVals.parentResizeVal > resizeVals.childResizeVal) {
+        BOX_RESIZE(resizeVals, parentBoxArray, 'parent')
+        BOX_RESIZE(resizeVals, childBoxArray, 'child')
+    } else {
+      alert('Parent box dimensions must be greater than child box dimensions')
+    }
 
   }
 
-  // Checks current size of boxes against user input, if the user input value !== current box size, boxes are resized, otherwise they are not.
-  const COMPARE = function() {
+  // BOX_RESIZE resizes the boxes, called after CHECK_VALS. Indicator param controls whether boxes passed into the function are resized according
+  // to the parent or child dimensions indicated by the user.
+  const BOX_RESIZE = function(resizeVals, boxArray, indicator) {
+
+    for (let box of boxArray) {
+      if (indicator === 'parent') {
+        box.style.height = `${resizeVals.parentResizeVal}px`
+        box.style.width = `${resizeVals.parentResizeVal}px`
+      }
+      if (indicator === 'child') {
+        box.style.height = `${resizeVals.childResizeVal}px`
+        box.style.width = `${resizeVals.childResizeVal}px`
+      }
+    }
 
   }
 
