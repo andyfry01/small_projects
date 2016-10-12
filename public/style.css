@@ -9,6 +9,11 @@ body {
   margin: 0;
 }
 
+img {
+  height: 100%;
+  width: 100%;
+}
+
 .center {
   margin: 0 auto;
 }
@@ -55,7 +60,8 @@ body {
   position: relative;
   height: 300px;
   width: 300px;
-  background: white;
+  background: url('./img/logo.jpg') no-repeat center center;
+  background-size: cover;
   border: 1px solid black;
   margin: 0 auto;
 }
