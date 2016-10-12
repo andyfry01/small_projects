@@ -57,7 +57,6 @@ p {
   position: relative;
   height: 75px;
   width: 400px;
-  text-align: left;
   margin: 0 auto;
 }
 
@@ -69,7 +68,6 @@ p {
   height: 100%;
   width: 50%;
   float: left;
-
   display: flex;
   flex-direction: column;
   justify-content: space-around;
