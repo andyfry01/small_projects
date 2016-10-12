@@ -1,0 +1,21 @@
+{
+  "name": "TDA_thankyou",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andyfry01/TDA_thankyou.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andyfry01/portfolio-frontend/issues"
+  },
+  "homepage": "https://github.com/andyfry01/TDA_thankyou#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
