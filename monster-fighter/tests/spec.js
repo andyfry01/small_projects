@@ -47,7 +47,7 @@ describe('fighter app', () => {
     })
   })
 
-  describe('grid creator', ()=>{
+  describe('grid creator', () => {
     it('should exist', () => {
       let actual = isFunction(fighterApp.grid)
       let expected = true
@@ -82,6 +82,57 @@ describe('fighter app', () => {
     })
   })
 
+  describe('init', () => {
+    it('should exist', () => {
+      let actual = isFunction(fighterApp.init)
+      let expected = true
+      assert.equal(actual, expected)
+    })
+    it('should return a game object', () => {
+      let game = fighterApp.init()
+      let actual = typeof game
+      let expected = 'object'
+      assert.equal(actual, expected)
+    })
+    it('should take input for the game grid size', () => {
+      let game = fighterApp.init(10)
+      let actual = game.gameGrid.length
+      let expected = 10
+      assert.equal(actual, expected)
+    })
+    it('should take input for character stats', () => {
+      let game = fighterApp.init(10, {HP: 10, attackPower: 20})
+      let actual = game.playerCharacter
+      let expected = {
+        HP: 10,
+        attackPower: 20
+      }
+      assert.deepEqual(actual, expected)
+    })
+  })
+
+  describe('gameObj', () => {
+    let game = undefined
+    beforeEach(() => {
+      game = fighterApp.init()
+    })
+    it('should exist', () => {
+      let actual = typeof game
+      let expected = 'object'
+      assert.equal(actual, expected)
+    })
+    it('should have a game grid', () => {
+      let actual = game.hasOwnProperty('gameGrid')
+      let expected = true
+      assert.equal(actual, expected)
+    })
+    // it('should return a game object', () => {
+    //   let game = fighterApp.init()
+    //   let actual = typeof game
+    //   let expected = 'object'
+    //   assert.equal(actual, expected)
+    // })
+  })
 })
 
 

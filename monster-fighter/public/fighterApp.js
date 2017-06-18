@@ -16,5 +16,15 @@ module.exports = {
       grid.push(gridCol)
     }
     return grid
+  },
+  init: function(gridSize=10, playerStats={HP: 10, attackPower: 10}){
+    const gameGrid = this.grid(gridSize)
+    const character = this.character(playerStats.HP, playerStats.attackPower)
+    function gameObj(){
+      this.gameGrid = gameGrid
+      this.playerCharacter = character
+    }
+    let game = new gameObj()
+    return game
   }
 }
