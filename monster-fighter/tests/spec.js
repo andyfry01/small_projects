@@ -46,6 +46,42 @@ describe('fighter app', () => {
       assert.equal(actualAttack, expectedAttack)
     })
   })
+
+  describe('grid creator', ()=>{
+    it('should exist', () => {
+      let actual = isFunction(fighterApp.grid)
+      let expected = true
+      assert.equal(actual, expected)
+    })
+    it('should return an array', () => {
+      let actual = Array.isArray(fighterApp.grid())
+      let expected = true
+      assert.equal(actual, expected)
+    })
+    it('should return a two-dimensional array', () => {
+      let grid = fighterApp.grid(3)
+      let actual = Array.isArray(grid[0])
+      let expected = true
+      assert.equal(actual, expected)
+    })
+    it ('should return a square two-dimensional array corresponding to user input', () => {
+      function checkNestedArrays(grid) {
+        return new Promise((resolve, reject) => {
+          grid.forEach(gridColumn => {
+            let actual = gridColumn.length
+            resolve(actual)
+          })
+        })
+      }
+      let grid = fighterApp.grid(5)
+      let expected = 5
+      return checkNestedArrays(grid)
+      .then(actual => {
+        assert.equal(actual, expected)
+      })
+    })
+  })
+
 })
 
 

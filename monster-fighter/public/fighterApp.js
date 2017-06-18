@@ -5,5 +5,16 @@ module.exports = {
       this.attackPower = attackPower
     }
     return new charObj(HP, attackPower)
+  },
+  grid: function(dimension){
+    let grid = []
+    for (let gridXAxis = 0; gridXAxis < dimension; gridXAxis++) {
+      let gridCol = []
+      for (let gridYAxis = 0; gridYAxis < dimension; gridYAxis++) {
+        gridCol.push(false)
+      }
+      grid.push(gridCol)
+    }
+    return grid
   }
 }
