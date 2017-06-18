@@ -1,0 +1,14 @@
+{
+  "name": "monster-fighter",
+  "version": "1.0.0",
+  "description": "a simple grid with a player character and monsters, you move around and fight",
+  "main": "app.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
