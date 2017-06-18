@@ -1,0 +1,44 @@
+.container {
+  position: relative;
+  margin-left: 10vw;
+  margin-top: 10vh;
+}
+.spinner {
+  position: relative;
+  height: 500px;
+  width: 500px;
+  background: lightblue;
+  transition: all 0.5s ease;
+}
+
+.corner {
+  position: absolute;
+  height: 250px;
+  width: 250px;
+  border: 1px dotted black;
+}
+
+.topLeft {
+  left: 0;
+  top: 0;
+}
+.topRight {
+  right: 0;
+  top: 0;
+}
+.bottomLeft {
+  left: 0;
+  bottom: 0;
+}
+.bottomRight {
+  right: 0;
+  bottom: 0;
+}
+
+.clicker {
+  height: 200px;
+  width: 200px;
+  background: purple;
+  color: white;
+  font-size: 2rem;
+}
