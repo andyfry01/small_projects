@@ -100,12 +100,19 @@ describe('fighter app', () => {
       let expected = 10
       assert.equal(actual, expected)
     })
+    it('should assign a gridRef to the playerCharacter on invokation', () => {
+      let game = fighterApp.init()
+      let actual = game.playerCharacter.gridRef
+      let expected = 0
+      assert.equal(actual, expected)
+    })
     it('should take input for character stats', () => {
       let game = fighterApp.init(10, {HP: 10, attackPower: 20})
       let actual = game.playerCharacter
       let expected = {
         HP: 10,
-        attackPower: 20
+        attackPower: 20,
+        gridRef: 0
       }
       assert.deepEqual(actual, expected)
     })
@@ -126,12 +133,44 @@ describe('fighter app', () => {
       let expected = true
       assert.equal(actual, expected)
     })
-    // it('should return a game object', () => {
-    //   let game = fighterApp.init()
-    //   let actual = typeof game
-    //   let expected = 'object'
-    //   assert.equal(actual, expected)
-    // })
+    it('should have a moveChar method', () => {
+      let actual = game.hasOwnProperty('moveChar')
+      let expected = true
+      assert.equal(actual, expected)
+    })
+    describe('placeChar', () => {
+      it('should exist', () => {
+        let actual = isFunction(fighterApp.placeChar)
+        let expected = true
+        assert.equal(actual, expected)
+      })
+      it('should place the playerCharacter at any specified coordinates', () => {
+        let gameGrid = [[false, false],
+                        [false, false]]
+        let char = { HP: 10, attackPower: 10, gridRef: 0 }
+        fighterApp.placeChar(char, gameGrid, 0, 1)
+        let actual = gameGrid
+        let expected = [[false, 0],
+                        [false, false]]
+        assert.deepEqual(actual, expected)
+        gameGrid = [[false, false],
+                    [false, false]]
+        fighterApp.placeChar(char, gameGrid, 1, 1)
+        actual = gameGrid
+        expected = [[false, false],
+                    [false, 0]]
+      })
+    })
+    describe('moveChar', () => {
+      it('should move a char in the gamegrid', () => {
+        let game = fighterApp.init(2)
+        game.moveChar(this.playerCharacter, 'down')
+        let actual = game.gameGrid
+        let expected = [[false, false],
+                        [0, false]]
+        assert.deepEqual(actual, expected)
+      })
+    })
   })
 })
 
