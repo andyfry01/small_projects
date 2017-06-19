@@ -1,0 +1,12 @@
+body{
+  background:#000;
+}
+#players > div{
+  height: 125px;
+  width: 200px;
+  float:left;
+}
+#players .keystroke{
+  color:#fff;
+  text-align:center;
+}

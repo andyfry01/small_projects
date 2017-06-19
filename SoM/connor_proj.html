@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div id="video"></div>
+            </div>
+            <div class="col-md-6">
+                <div id="video2"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div id="video3"></div>
+            </div>
+            <div class="col-md-6">
+                <div id="video4"></div>
+            </div>
+        </div>
+    </div>
+    <div id="video"></div>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="blip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mousetrap/1.4.6/mousetrap.min.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+    var player;
+
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('video', {
+            width: 400,
+            height: 300,
+            videoId: 'rVbhmdMMPRs'
+        });
+        player2 = new YT.Player('video2', {
+            width: 400,
+            height: 300,
+            videoId: 'rVbhmdMMPRs'
+        });
+        player3 = new YT.Player('video3', {
+            width: 400,
+            height: 300,
+            videoId: 'rVbhmdMMPRs'
+        });
+        player4 = new YT.Player('video4', {
+            width: 400,
+            height: 300,
+            videoId: 'rVbhmdMMPRs'
+        });
+
+        setTimeout(initialize,2000)
+
+        function initialize() {
+            player.seekTo(5)
+            player.pauseVideo()
+                /*setInterval(function(){
+                	setTimeout(function(){
+                		player.playVideo();
+                	},500)
+                	player.seekTo(5)
+                	player.pauseVideo();
+                },1000)*/
+            var monotonous = blip.loop()
+                .tempo(100)
+                .tick(function(t) {
+                    player.seekTo(602)
+                    player.pauseVideo()
+                    player.playVideo()
+                });
+            var rhythmic = blip.loop()
+                .tempo(400)
+                .data([0, 1, 0, 1, 0, 1, 0, 1])
+                .tick(function(t, d) {
+                    if (d) {
+                        player2.seekTo(612)
+                        player2.pauseVideo()
+                        player2.playVideo()
+                    }
+                });
+            player.seekTo(602)
+            player2.seekTo(612)
+            player3.seekTo(185)
+            player4.seekTo(615)
+
+            player.pauseVideo()
+            player2.pauseVideo()
+            player3.pauseVideo()
+            player4.pauseVideo()
+
+            rhythmic.start();
+            monotonous.start();
+        }
+
+        Mousetrap.bind('a', function() {
+            player3.seekTo(185)
+            player3.pauseVideo()
+            player3.playVideo()
+        });
+        Mousetrap.bind('l', function() {
+            player4.seekTo(615)
+            player4.pauseVideo()
+            player4.playVideo()
+        });
+        Mousetrap.bind('z', function() {
+            player3.seekTo(185)
+            player3.pauseVideo()
+        });
+        Mousetrap.bind(',', function() {
+            player4.seekTo(615)
+            player4.pauseVideo()
+        });
+    }
+    </script>
+</body>
+
+</html>
