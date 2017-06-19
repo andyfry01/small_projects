@@ -1,0 +1,139 @@
+/*** Basic site styling ***/
+
+* {
+  box-sizing: border-box;
+  font-family: 'Helvetica', sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+img {
+  height: 100%;
+  width: 100%;
+}
+
+button {
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.75);
+  color: white;
+  font-size: 1.25rem;
+}
+
+p {
+  font-size: 1.25rem;
+}
+
+
+/*** Styling for site subsections ***/
+
+#site_wrap {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  background: url('./img/jersey_city.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+#header {
+  position: relative;
+  height: 40%;
+  width: 100%;
+  padding: 10px 0 10px 0;
+  background: rgba(255, 255, 255, 0.5);
+  text-align: center;
+}
+
+#box_examples {
+  position: relative;
+  height: 60%;
+  width: 100%;
+}
+
+#resizing_controls {
+  position: relative;
+  height: 75px;
+  width: 400px;
+  margin: 0 auto;
+}
+
+
+/*** Styling for common elements shared by both examples ***/
+
+.example_area {
+  position: relative;
+  height: 100%;
+  width: 50%;
+  float: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.parent {
+  position: relative;
+  height: 300px;
+  width: 300px;
+  background: url('./img/logo.jpg') no-repeat center center;
+  background-size: cover;
+  border: 1px solid black;
+  border-radius: 5%;
+  margin: 0 auto;
+}
+
+.child {
+  height: 200px;
+  width: 200px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px dotted black;
+  border-radius: 5%;
+}
+
+
+/*** Implementation-specific styling ***/
+
+/* Margin implementation styling */
+
+#child_box_margin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+/* Flexbox implementation styling */
+
+#parent_box_flexbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+#child_box_flexbox {
+  margin: 0 auto;
+}
+
+
+/* Misc */
+
+.center {
+  margin: 0 auto;
+}
+
+.inputs {
+  float: right;
+}
+
+.label {
+  float: left;
+}
+
+.headerBG {
+  width: 300px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.75)
+}
