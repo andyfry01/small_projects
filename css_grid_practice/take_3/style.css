@@ -1,0 +1,145 @@
+body {
+  margin: 0;
+}
+
+.grid {
+  display: grid;
+  height: 100vh;
+}
+.skills {
+  background: lightblue;
+}
+.projects {
+  background: lightyellow;
+}
+.contact {
+  background: lightgreen;
+}
+.about {
+  background: pink;
+}
+.name {
+  background: blue;
+  font-family: 'Cutive Mono', monospace;
+  /*font-family: 'Josefin Slab', serif;*/
+}
+h1 {
+  font-size: 4rem;
+}
+h2 {
+  font-size: 3rem;
+}
+
+
+@media only screen and (min-width : 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, 1fr);
+  }
+  .name {
+    grid-column: 1/2;
+  }
+  .skills {
+    grid-row: 1/2;
+  }
+  .projects {
+    grid-row: 2/3;
+  }
+  .contact {
+    grid-row: 4/5;
+  }
+  .about {
+    grid-row: 5/6;
+  }
+  .name {
+    grid-row: 3/4;
+  }
+}
+
+@media only screen and (min-width : 992px) {
+  .grid {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+  }
+  .skills {
+    grid-column: 1/3;
+    grid-row: 1/3;
+    display: grid;
+    grid-template-columns: 1;
+    grid-template-rows: repeat(auto-fill);
+    grid-gap: 0.5rem;
+    overflow: scroll;
+    z-index: 0;
+
+  }
+  .skills:hover {
+    grid-column: 1/3;
+    grid-row: 1/5;
+    z-index: 2;
+  }
+
+  .skillBox {
+    grid-column: 1/2;
+    grid-row: span 1;
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+  }
+  .skillHeader {
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+  .skillList {
+    grid-column: 1/2;
+    grid-row: 2/3;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(auto-fill);
+  }
+  .exampleSkill {
+    border: 1px solid black;
+    height: 10rem;
+    /*width: 10rem;*/
+    /*grid-row: span 1;
+    grid-column: span 1;*/
+  }
+
+  .projects {
+    grid-column: 3/5;
+    grid-row: 1/3;
+  }
+  .projects:hover {
+    grid-column: 2/5;
+    grid-row: 1/4;
+    z-index: 2;
+  }
+
+  .contact {
+    grid-column: 1/3;
+    grid-row: 3/5;
+  }
+  .contact:hover {
+    grid-column: 1/5;
+    z-index: 1;
+  }
+
+  .about {
+    grid-column: 3/5;
+    grid-row: 3/5;
+    background: purple;
+  }
+  .about:hover {
+    grid-column: 2/5;
+    grid-row: 2/5;
+    z-index: 1;
+  }
+
+  .name {
+    grid-column: 2/4;
+    grid-row: 2/4;
+    z-index: 1;
+  }
+}
