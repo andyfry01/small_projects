@@ -1,0 +1,67 @@
+h1 {
+   /* font-family: 'Work Sans', sans-serif; */
+    /* font-family: 'Kanit', sans-serif; */
+    /* font-family: 'Questrial', sans-serif; */
+    font-family: 'Russo One', sans-serif;
+}
+
+.panel {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    position: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    grid-gap: 10%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.panel.content {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: 15% 1fr;
+    background-color: rgba(255, 255, 255, 0.5);
+    grid-gap: 0;
+}
+
+.statsArea {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(auto-fill, 20%);
+  overflow: scroll;
+}
+
+.item {
+  border: 5px double black;
+  margin-bottom: 1rem;
+  display: grid;
+  grid-template-columns: 10% 60% 30%;
+  grid-template-rows: 100%;
+  grid-gap: 0;
+}
+
+.number {
+  text-align: center;
+}
+
+.number h2 {
+  font-size: 5rem;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.title {
+
+}
+
+.title, .score p {
+  font-size: 1.5rem;
+}
+.title h1 {
+    color: rgb(0, 253, 161);
+}
