@@ -1,56 +1,76 @@
 import React, { Component } from 'react';
 import '../../App.css';
-import ajax from '../../Utils/ajax.js'
-import coolCat from '../../Img/Cool_cat.jpg'
-import Iframe from 'react-iframe'
+import ajax from '../../Utils/ajax.js';
+import coolCat from '../../Img/Cool_cat.jpg';
+import Iframe from 'react-iframe';
 
-const renderIf = predicate => element  => predicate && element
+const renderIf = predicate => element  => predicate && element;
 
 class SongList extends Component {
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
       addSongParams: {
         songName: '',
-        artist: ''
+        artist: '',
       },
       paginationRange: {
         start: 1,
-        end: 10
+        end: 10,
       },
-      songSearchResults: [{name: 'cool cat', img: coolCat, dateAdded: Date.now()}],
-      paginationInterval: 2
-    }
-    this.buildList = this.buildList.bind(this)
-    this.getSong = this.getSong.bind(this)
-    this.loadVideoIframe = this.loadVideoIframe.bind(this)
-    this.saveSong = this.saveSong.bind(this)
-    this.renderPaginationButtons = this.renderPaginationButtons.bind(this)
+      songSearchResults: [{ name: 'cool cat', img: coolCat, dateAdded: Date.now() }],
+      paginationInterval: 2,
+    };
+    this.buildList = this.buildList.bind(this);
+    this.getSong = this.getSong.bind(this);
+    this.loadVideoIframe = this.loadVideoIframe.bind(this);
+    this.saveSong = this.saveSong.bind(this);
+    this.renderPaginationButtons = this.renderPaginationButtons.bind(this);
   }
 
-  buildList(songData, pagination) {
-    return songData.map((song, index) => {
+  setPaginationRange(e, range) {
+    e.preventDefault();
+    let stateUpdate = this.state.paginationRange;
+    stateUpdate = range;
+    this.setState({
+      paginationRange: stateUpdate,
+    });
+  }
+
+  getSong() {
+    return ajax.getSong({ songName: this.state.addSongParams.songName, artist: this.state.addSongParams.artist })
+      .then(res => this.setState({
+        songSearchResults: res.data.songs,
+      }));
+  }
+
+  buildList(songData, pagination, sortingField) {
+    return songData.sort((a, b) => {
+      console.log(a);
+      console.log(b);
+      let vidA = a[sortingField].toLowerCase();
+      let vidB = b[sortingField].toLowerCase();
+      if (vidA < vidB) {
+        return -1;
+      }
+      if (vidA > vidB) {
+        return 1;
+      }
+      return 0;
+    }).map((song, index) => {
       if (index >= this.state.paginationRange.start && index <= this.state.paginationRange.end) {
-        let url = `http://www.youtube.com/embed/${song.url}`
+        let url = `http://www.youtube.com/embed/${song.url}`;
         return (
           <li key={index}>
             <h2><a href={url} target="_blank">{song.songName} - {song.artist}</a></h2>
-            <h3></h3>
-            <img src={song.largeThumbnail} onClick={this.loadVideoIframe(index)}></img>
+            <img alt="video thumbnail" src={song.largeThumbnail} />
             <p>Video title: {song.videoTitle}</p>
             <p>Date added: {song.dateAdded || null}</p>
             <button onClick={() => this.saveSong(song)}>Save this song</button>
           </li>
-        )
+        );
       }
-    })
-  }
-
-  getSong() {
-    return ajax.getSong({songName: this.state.addSongParams.songName, artist: this.state.addSongParams.artist})
-    .then(res => this.setState({
-      songSearchResults: res.data.songs
-    }))
+    });
   }
 
   saveSong(songData) {
@@ -66,14 +86,6 @@ class SongList extends Component {
     })
   }
 
-  setPaginationRange(e, range) {
-    e.preventDefault()
-    let stateUpdate = this.state.paginationRange
-    stateUpdate = range
-    this.setState({
-      paginationRange: stateUpdate
-    })
-  }
 
   renderPaginationButtons(){
     if (this.state.songSearchResults.length > this.state.paginationInterval) {
@@ -115,7 +127,7 @@ class SongList extends Component {
 
         <div className="list">
           <ul>
-            {this.buildList(this.state.songSearchResults, {start: 0, end: 10})}
+            {this.buildList(this.state.songSearchResults, {start: 0, end: 10}, 'url')}
           </ul>
         </div>
         <div className="pagination">
