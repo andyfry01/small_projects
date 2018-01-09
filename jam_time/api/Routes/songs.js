@@ -1,23 +1,18 @@
 const mongoose = require('mongoose')
 const request = require('request')
 const util = require('util')
+const SongSchema = require('../Schemas/Song.js')
+const PlaylistSchema = require('../Schemas/Playlist.js')
 
-const songSchema = mongoose.Schema({
-  url: String,
-  defaultThumbnail: String,
-  mediumThumbnail: String,
-  largeThumbnail: String,
-  videoTitle: String,
-  artist: String,
-  songName: String
-}, {timestamps: true});
-
-const Song = mongoose.model('Song', songSchema, 'savedSongs');
+const Song = mongoose.model('Song', SongSchema, 'savedSongs');
+const Playlist = mongoose.model('Playlist', PlaylistSchema, 'playlists');
 
 let YoutubeApiKey = process.env.YoutubeApiKey
 
 module.exports = {
-  list: function() {},
+  list: function(playlistName) {
+    Playlist.findOne({name: playListName})
+  },
   fetchYoutubeData: function(params) {
     return new Promise((resolve, reject) => {
       request(`https://content.googleapis.com/youtube/v3/search?q=${params.artist}%20${params.songName}=&maxResults=25&part=snippet&key=${YoutubeApiKey}`, (err, res, body) => {
@@ -38,7 +33,7 @@ module.exports = {
       })
     })
   },
-  save: function(songData, db) {
+  save: function(songData, playlistName, db) {
     return new Promise((resolve, reject) => {
       let newSong = new Song(songData)
       newSong.updatedAt = new Date()
