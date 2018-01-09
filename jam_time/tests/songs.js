@@ -111,4 +111,18 @@ describe('Songs', () => {
       })
     })
   });
+
+  describe('#fetchYoutubeData()', () => {
+    it('should fetch a video from youtube matching the search terms', (done) => {
+      let YoutubeApiKey = process.env.YoutubeApiKey
+      let testInput = { artist: 'meatloaf', songName: 'paradise by the dashboard light' }
+      songs.fetchYoutubeData(testInput)
+      .then(data => {
+        if (data[0].videoTitle.toLowerCase().indexOf(testInput.songName.toLowerCase()) < 0) {
+          done('data from search does not contain search term')
+        }
+        done()
+      })
+    })
+  })
 });
