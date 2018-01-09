@@ -54,6 +54,7 @@ class SongList extends Component {
   }
 
   saveSong(songData) {
+    songData = Object.assign({}, songData, {playlistName: this.props.playlistId})
     return ajax.saveSong(songData)
   }
 
@@ -102,9 +103,9 @@ class SongList extends Component {
 
   render() {
     return (
-      <section className={this.props.songListName}>
+      <section className={this.props.playlistId}>
         <div className="addSongControls">
-          <h2>Add a song to the {this.props.songListName}</h2>
+          <h2>Add a song to the {this.props.playlistDisplayName}</h2>
           <label for="artist">Arist</label>
           <input name="artist" type="text" onChange={(e) => this.updateSongAddParams(e.target.value, 'artist')}></input>
           <label for="songName">Song name:</label>
