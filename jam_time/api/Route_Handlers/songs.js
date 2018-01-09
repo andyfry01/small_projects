@@ -27,23 +27,34 @@ module.exports = {
             videoTitle: video.snippet.title,
             artist: params.artist,
             songName: params.songName,
-          }
-        })
-        resolve(data)
-      })
-    })
+          };
+        });
+        resolve(data);
+      });
+    });
   },
-  save: function(songData, playlistName, db) {
+  save(songData) {
     return new Promise((resolve, reject) => {
-      let newSong = new Song(songData)
-      newSong.updatedAt = new Date()
-      newSong.save((err, result) => {
+      const newSong = new Song(songData);
+      newSong.updatedAt = new Date();
+      newSong.save((err) => {
         if (err) {
           console.log(err);
-          reject(err)
+          reject(err);
         }
-        resolve('success')
-      })
-    })
-  }
-}
+        resolve('success');
+      });
+    });
+  },
+  fetchAudio(ytVideoId, res) {
+    if (typeof ytVideoId !== 'string') {
+      throw new Error('Wrong type, fetchAudio takes a url string');
+    }
+    const requestUrl = `https://youtube.com/watch?v=${ytVideoId}`;
+    try {
+      youtubeStream(requestUrl).pipe(res);
+    } catch (exception) {
+      res.status(500).send(exception);
+    }
+  },
+};
