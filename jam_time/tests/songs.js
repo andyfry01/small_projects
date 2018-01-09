@@ -1,14 +1,14 @@
 const mongoose = require('mongoose')
 const mocha = require('mocha')
 
-const songs = require('../api/Routes/songs.js')
-const SongSchema = require('../api/Schemas/Song.js')
-const PlaylistSchema = require('../api/Schemas/Playlist.js')
+var songs = require('../api/Route_Handlers/songs.js')
+var SongSchema = require('../api/Schemas/Song.js')
+var PlaylistSchema = require('../api/Schemas/Playlist.js')
 
-const Song = mongoose.model('Song', SongSchema, 'savedSongs');
-const Playlist = mongoose.model('Playlist', PlaylistSchema, 'playlists');
+var Song = mongoose.model('Song', SongSchema, 'savedSongs');
+var Playlist = mongoose.model('Playlist', PlaylistSchema, 'playlists');
 
-const testSong = { url: "FGT1AcMRV9w",
+var testSong = { url: "FGT1AcMRV9w",
   defaultThumbnail: "https://i.ytimg.com/vi/FGT1AcMRV9w/default.jpg",
   artist : "meatloaf",
   defaultThumbnail : "https://i.ytimg.com/vi/FGT1AcMRV9w/default.jpg",
@@ -24,7 +24,6 @@ describe('Songs', () => {
   before((done) => {
     mongoose.connect('mongodb://localhost:27017/jam_time_test');
     const db = mongoose.connection;
-
     db.on('error', console.error.bind(console, 'connection error:'));
     db.once('open', () => {
 

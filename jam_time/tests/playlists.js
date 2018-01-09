@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const mocha = require('mocha')
 
-const songs = require('../api/Routes/songs.js')
+const songs = require('../api/Route_Handlers/songs.js')
 const SongSchema = require('../api/Schemas/Song.js')
 const PlaylistSchema = require('../api/Schemas/Playlist.js')
 
