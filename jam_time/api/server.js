@@ -65,6 +65,16 @@ app.get('/songs/fetch', (req, res) => {
   })
 })
 
+app.get('/songs/list', (req, res) => {
+  songs.list(req.params.playlistName)
+  .then((playlistData) => {
+    res.json({
+      playlist: playlistData.playlist,
+      playlistName: playlistData.playlistName
+    })
+  })
+})
+
 app.post('/songs/save', (req, res) => {
   songs.save(req.body.songData, db)
   .then((response) => {
