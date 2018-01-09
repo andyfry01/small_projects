@@ -5,16 +5,13 @@ const logger = require('morgan');
 const chalk = require('chalk');
 const errorHandler = require('errorhandler');
 const flash = require('express-flash');
-const path = require('path');
 const expressValidator = require('express-validator');
 const expressStatusMonitor = require('express-status-monitor');
+const songs = require('./Route_Handlers/songs.js');
+const mongoose = require('mongoose');
 
 const app = express();
 
-const songs = require('./Route_Handlers/songs.js')
-
-
-const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost:27017/jam_time');
 const db = mongoose.connection;
 
@@ -43,43 +40,46 @@ app.use(function(req, res, next) {
   next();
 });
 
-
 require('dotenv').config()
 
 /**
  * Primary app routes.
  */
 app.get('/', (req, res) => {
-  console.log(req);
+  console.log(req)
   res.json({
-    'hi': 'andy'
-  })
+    hi: 'andy',
+  });
 });
 
 app.get('/songs/fetch', (req, res) => {
-  songs.fetchYoutubeData({artist: req.query.artist, songName: req.query.songName})
-  .then((songData) => {
-    res.json({
-      songs: songData
-    })
-  })
-})
+  songs.fetchYoutubeData({ artist: req.query.artist, songName: req.query.songName })
+    .then((songData) => {
+      res.json({
+        songs: songData,
+      });
+    });
+});
 
 app.get('/songs/list', (req, res) => {
   songs.list(req.params.playlistName)
-  .then((playlistData) => {
-    res.json({
-      playlist: playlistData.playlist,
-      playlistName: playlistData.playlistName
-    })
-  })
-})
+    .then((playlistData) => {
+      res.json({
+        playlist: playlistData.playlist,
+        playlistName: playlistData.playlistName,
+      });
+    });
+});
+
+app.get('/songs/audioStream', (req, res) => {
+  songs.fetchAudio(req.query.ytVideoId, res);
+});
 
 app.post('/songs/save', (req, res) => {
   songs.save(req.body.songData, db)
-  .then((response) => {
-    response === 'success' ? res.status(201) : res.status(500)
-  })
+    .then((response) => {
+      response === 'success' ? res.status(201) : res.status(500)
+    });
 });
 
 /**
