@@ -12,5 +12,12 @@ module.exports = {
     return axios.post( 'http://localhost:3001/songs/save', {
       songData
     })
+  },
+  getPlaylist(playlistName){
+    return axios.get( 'http://localhost:3001/songs/list', {
+      params: {
+        playlistName: playlistName
+      }
+    })
   }
 }
